@@ -28,7 +28,7 @@ const links = [
 const soc = `<a href="https://github.com/" aria-label="GitHub">${ic("gh")}</a><a href="https://www.linkedin.com/" aria-label="LinkedIn">${ic("in")}</a><a href="mailto:subodhpaudel63@gmail.com" aria-label="Email">${ic("mail")}</a>`;
 const logo = '<a href="index.html" class="logo"><b>SP</b>Subodh Paudel</a>';
 $("#hd").innerHTML =
-  `<div class="wrap nav">${logo}<nav class="links">${links}</nav><div class="nav-actions"><button class="theme-toggle" type="button" aria-label="Switch to light theme"><i class="fa-solid fa-sun"></i></button><a href="#" class="btn dark sm" download>Download CV</a><button class="menu" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button></div></div>`;
+  `<div class="wrap nav">${logo}<nav class="links">${links}</nav><div class="nav-actions"><button class="theme-toggle" type="button" aria-label="Switch to light theme"><i class="fa-solid fa-sun"></i></button><!-- Add the CV file link here when it is available. --><a class="btn dark sm">Download CV</a><button class="menu" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button></div></div>`;
 $("#ft").innerHTML =
   `<div class="wrap footer-grid"><div class="footer-brand">${logo}<p class="sm">BITM Student and Web Developer from Pokhara, Nepal.</p><p class="footer-copy">Building clean, useful digital experiences with purpose.</p></div><div><h3>Let's Connect</h3><p class="sm">Have a project or idea in mind?</p><a class="footer-mail" href="mailto:subodhpaudel63@gmail.com">subodhpaudel63@gmail.com</a><div class="soc">${soc}</div></div></div><div class="wrap cp">© ${new Date().getFullYear()} Subodh Paudel. All rights reserved.</div>`;
 $(".menu").onclick = () => $("#hd .links").classList.toggle("open");

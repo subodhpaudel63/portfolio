@@ -1,0 +1,624 @@
+/* Shared color and visual effects; layout lives in style.css. */
+:root {
+  --bg: #f4f4f4;
+  --ink: #2e2e2e;
+  --mut: #4a90e2;
+  --line: #d9d9d9;
+  --g: linear-gradient(135deg, #2e2e2e, #4a90e2);
+  --ph: linear-gradient(135deg, #d9d9d9, #4a90e2);
+}
+
+body:before {
+  content: "";
+  position: fixed;
+  inset: -10% -5%;
+  z-index: -1;
+  pointer-events: none;
+  translate: 0 calc(var(--sy, 0) * -0.12px);
+  background:
+    radial-gradient(520px 380px at 12% 8%, #ffffffaa, #0000),
+    radial-gradient(460px 380px at 92% 22%, #4a90e233, #0000),
+    radial-gradient(480px 460px at 65% 92%, #ffffff88, #0000);
+  animation: background-drift 16s ease-in-out infinite alternate;
+}
+
+@keyframes background-drift {
+  to {
+    transform: scale(1.12) rotate(2deg);
+  }
+}
+
+#hd,
+.nav,
+#hd .links a,
+.logo {
+  transition:
+    background 0.35s,
+    box-shadow 0.35s,
+    color 0.3s;
+}
+
+#hd.sc {
+  background: #f1f7ff;
+  border-color: #d8e8fa;
+  box-shadow: 0 4px 16px #1f6feb12;
+}
+
+#hd.sc .logo,
+#hd.sc .links a,
+#hd.sc .menu {
+  color: #171717;
+}
+
+#hd.sc .links a:after {
+  background: #4a90e2;
+}
+
+#hd.sc .btn.dark {
+  background: linear-gradient(135deg, #4a90e2, #72afea);
+}
+
+#hd.sc .links.open a {
+  color: var(--ink);
+}
+
+.logo b {
+  background: var(--g);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grad {
+  background-image: linear-gradient(90deg, #2e2e2e, #4a90e2, #2e2e2e);
+  background-size: 200% auto;
+  animation: gradient-shift 7s linear infinite;
+}
+
+.grad.l {
+  background-image: linear-gradient(90deg, #2e2e2e, #4a90e2);
+}
+
+@keyframes gradient-shift {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.chip {
+  background: #e5effb;
+  color: #2e2e2e;
+  border: 1px solid #b8d5f5;
+  font-weight: 500;
+  padding: 3px 12px;
+  border-radius: 99px;
+}
+
+.roles span:nth-child(2),
+.note {
+  color: #4a90e2;
+}
+
+.btn {
+  color: #2e2e2e;
+  border-color: #2e2e2e;
+}
+
+.btn:not(.dark):hover {
+  background: #e5effb;
+}
+
+.btn.dark {
+  position: relative;
+  overflow: hidden;
+  background: var(--g);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 10px 24px #2e2e2e40;
+}
+
+.btn.dark:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(100deg, #0000, #fff6, #0000);
+  transform: skewX(-20deg);
+  transition: left 0.6s;
+}
+
+.btn.dark:hover:before {
+  left: 130%;
+}
+
+.row h2:after,
+h3.h:after {
+  content: "";
+  display: block;
+  width: 38px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--g);
+  margin-top: 6px;
+}
+
+.photo:before {
+  background: var(--g);
+  opacity: 0.85;
+  border: 0;
+  transform: rotate(7deg) translate(16px, -6px);
+}
+
+.pic {
+  border: 5px solid #fff;
+  box-shadow: 0 24px 50px #2e2e2e35;
+  animation: photo-float 6s ease-in-out infinite;
+}
+
+@keyframes photo-float {
+  50% {
+    transform: rotate(-3deg) translateY(-10px);
+  }
+}
+
+.fb {
+  position: absolute;
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 12px 28px #2e2e2e25;
+  animation: badge-float 5s ease-in-out infinite;
+}
+
+@keyframes badge-float {
+  50% {
+    translate: 0 -12px;
+  }
+}
+
+.stats {
+  border-color: var(--line);
+  box-shadow: 0 14px 40px #2e2e2e18;
+}
+
+.stats b {
+  font-size: 26px;
+  background: var(--g);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.soc a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 17px;
+  box-shadow: 0 6px 16px #2e2e2e18;
+}
+
+.soc a:hover {
+  background: var(--g);
+  color: #fff;
+  border-color: transparent;
+}
+
+.card {
+  border-color: var(--line);
+}
+
+.card:hover {
+  border-color: #4a90e2;
+  box-shadow: 0 22px 44px #2e2e2e25;
+}
+
+.card:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 50%),
+    #4a90e224,
+    #0000 60%
+  );
+}
+
+.card:hover:before {
+  opacity: 1;
+}
+
+.card:after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: -1px;
+  height: 3px;
+  border-radius: 0 0 4px 4px;
+  background: var(--g);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s;
+}
+
+.card:hover:after {
+  transform: scaleX(1);
+}
+
+.tag {
+  background: #e5effb;
+  color: #2e2e2e;
+}
+
+.tag:nth-child(2) {
+  background: #eaf4ff;
+  color: #3979b9;
+}
+
+.tag:nth-child(3) {
+  background: #f0f0f0;
+  color: #555;
+}
+
+.go {
+  background: #e5effb;
+  color: #2e2e2e;
+}
+
+.card:hover .go {
+  background: var(--g);
+  color: #fff;
+  transform: rotate(-45deg);
+}
+
+.pill:hover {
+  border-color: #4a90e2;
+  color: #2e2e2e;
+}
+
+.pill.on,
+.pill.on:hover {
+  background: var(--g);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 8px 18px #2e2e2e30;
+}
+
+.ico {
+  width: 50px;
+  height: 50px;
+  font-size: 28px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--c) 13%, #fff);
+  transition: transform 0.3s;
+}
+
+.sk:hover .ico {
+  transform: rotate(-8deg) scale(1.12);
+}
+
+.pills span {
+  transition: 0.25s;
+}
+
+.pills span:hover {
+  background: var(--g);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-3px);
+}
+
+.info .i,
+.ci > .i {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 18px;
+  flex: none;
+  box-shadow: none;
+}
+
+.tl {
+  position: relative;
+}
+
+.tl:before {
+  content: "";
+  position: absolute;
+  left: 3.5px;
+  top: 32px;
+  bottom: 32px;
+  width: 1px;
+  background: linear-gradient(#2e2e2e, #4a90e2);
+}
+
+.tl div:before {
+  background: var(--g);
+  box-shadow: 0 0 0 4px #d9d9d9;
+}
+
+.form {
+  border-color: var(--line);
+  box-shadow: 0 20px 50px #2e2e2e18;
+}
+
+.form input:focus,
+.form textarea:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px #4a90e233;
+}
+
+#ft {
+  background: linear-gradient(135deg, #2e2e2e, #3b3b3b 60%, #4a90e2);
+  border: 0;
+  color: #fff;
+}
+
+#ft .logo,
+#ft .sm,
+#ft .footer-mail {
+  color: #fff;
+}
+
+#ft .soc a {
+  width: 34px;
+  height: 34px;
+  font-size: 14px;
+  background: #ffffff18;
+  border-color: #ffffff40;
+  color: #fff;
+}
+
+.top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 30;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--g);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 12px 28px #2e2e2e55;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.top.on {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.top:hover {
+  transform: translateY(-4px);
+}
+
+body.light {
+  --bg: #fff;
+  --ink: #2e2e2e;
+  --mut: #4a90e2;
+  --line: #d9d9d9;
+  --g: linear-gradient(135deg, #2e2e2e, #4a90e2);
+  --ph: linear-gradient(135deg, #f4f4f4, #4a90e2);
+}
+
+body.light:before {
+  background:
+    radial-gradient(520px 380px at 12% 8%, #4a90e222, #0000),
+    radial-gradient(460px 380px at 92% 22%, #4a90e233, #0000),
+    radial-gradient(480px 460px at 65% 92%, #f4f4f4, #0000);
+}
+
+body.light #hd {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: #eaeaea;
+}
+
+body.dark #hd {
+  border-color: #30363d;
+}
+
+body.light .form input,
+body.light .form textarea {
+  background: #f4f4f4;
+  color: #2e2e2e;
+}
+
+body.dark {
+  --bg: #0d1117;
+  --ink: #e6edf3;
+  --mut: #8b949e;
+  --line: #30363d;
+  --g: linear-gradient(135deg, #1f6feb, #388bfd);
+  --ph: linear-gradient(135deg, #161b22, #30363d);
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body.dark:before {
+  background:
+    radial-gradient(520px 380px at 12% 8%, #1f6feb12, #0000),
+    radial-gradient(460px 380px at 92% 22%, #388bfd0a, #0000);
+}
+
+body.dark #hd {
+  background: #0d1117ee;
+}
+
+body.dark #hd .logo,
+body.dark #hd .menu {
+  color: #e6edf3;
+}
+
+body.dark #hd.sc {
+  background: linear-gradient(90deg, #0d1117, #161b22 55%, #1f6feb);
+}
+
+body.dark #hd.sc .logo,
+body.dark #hd.sc .links a,
+body.dark #hd.sc .menu {
+  color: #e6edf3;
+}
+
+body.dark .links a,
+body.dark .menu,
+body.dark .logo,
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark .roles span,
+body.dark .footer-mail {
+  color: #e6edf3;
+}
+
+body.dark .links a:after {
+  background: #388bfd;
+}
+
+body.dark .lead,
+body.dark .sm,
+body.dark .row a,
+body.dark .tl p + p,
+body.dark .info div,
+body.dark .ci {
+  color: #8b949e;
+}
+
+body.dark .info b,
+body.dark .ci b {
+  color: #e6edf3;
+}
+
+body.dark .chip {
+  background: #161b22;
+  color: #e6edf3;
+  border-color: #30363d;
+}
+
+body.dark .btn {
+  background: #161b22;
+  color: #e6edf3;
+  border-color: #30363d;
+}
+
+body.dark .btn:hover,
+body.dark .btn:not(.dark):hover {
+  background: #21262d;
+  color: #fff;
+}
+
+body.dark .btn.dark {
+  background: var(--g);
+  color: #fff;
+  border-color: transparent;
+}
+
+body.dark .theme-toggle {
+  color: #e6edf3;
+  border-color: #30363d;
+}
+
+body.dark .stats,
+body.dark .card,
+body.dark .pill,
+body.dark .pills span,
+body.dark .form {
+  background: #161b22;
+  color: #e6edf3;
+  border-color: #30363d;
+}
+
+body.dark .tag,
+body.dark .go {
+  background: #21262d;
+  color: #e6edf3;
+}
+
+body.dark .soc a {
+  background: #161b22;
+  color: #e6edf3;
+  border-color: #30363d;
+}
+
+body.dark .soc a:hover,
+body.dark .card:hover .go {
+  background: var(--g);
+  color: #fff;
+}
+
+body.dark .form input,
+body.dark .form textarea {
+  background: #0d1117;
+  color: #e6edf3;
+  border-color: #30363d;
+}
+
+body.dark .form input::placeholder,
+body.dark .form textarea::placeholder {
+  color: #8b949e;
+}
+
+body.dark #ft {
+  background: #010409;
+  color: #e6edf3;
+  border-color: #30363d;
+}
+
+body.dark #ft .logo,
+body.dark #ft .sm,
+body.dark #ft .footer-mail {
+  color: #e6edf3;
+}
+
+body.dark .pic {
+  border-color: #e6edf3;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

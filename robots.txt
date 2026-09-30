@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://subodh-paudel.com.np/sitemap.xml
+
+
+

@@ -273,15 +273,6 @@ h1.m {
   transform: rotate(-3deg);
   box-shadow: 0 20px 40px #0f172a22;
 }
-.note {
-  position: absolute;
-  font:
-    500 26px/1 Caveat,
-    cursive;
-  color: #475569;
-  transform: rotate(-8deg);
-  pointer-events: none;
-}
 @keyframes fl {
   50% {
     transform: translateY(-10px);

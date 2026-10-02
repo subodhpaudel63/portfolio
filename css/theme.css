@@ -2,7 +2,8 @@
 :root {
   --bg: #f4f4f4;
   --ink: #2e2e2e;
-  --mut: #4a90e2;
+  --mut: #566173;
+  --accent: #4a90e2;
   --line: #d9d9d9;
   --g: linear-gradient(135deg, #2e2e2e, #4a90e2);
   --ph: linear-gradient(135deg, #d9d9d9, #4a90e2);
@@ -14,7 +15,6 @@ body:before {
   inset: -10% -5%;
   z-index: -1;
   pointer-events: none;
-  translate: 0 calc(var(--sy, 0) * -0.12px);
   background:
     radial-gradient(520px 380px at 12% 8%, #ffffffaa, #0000),
     radial-gradient(460px 380px at 92% 22%, #4a90e233, #0000),
@@ -94,8 +94,7 @@ body:before {
   border-radius: 99px;
 }
 
-.roles span:nth-child(2),
-.note {
+.roles span:nth-child(2) {
   color: #4a90e2;
 }
 
@@ -154,7 +153,6 @@ h3.h:after {
 .pic {
   border: 5px solid #fff;
   box-shadow: 0 24px 50px #2e2e2e35;
-  animation: photo-float 6s ease-in-out infinite;
 }
 
 @keyframes photo-float {
@@ -389,42 +387,11 @@ h3.h:after {
   color: #fff;
 }
 
-.top {
-  position: fixed;
-  right: 22px;
-  bottom: 22px;
-  z-index: 30;
-  width: 46px;
-  height: 46px;
-  display: grid;
-  place-items: center;
-  border: 0;
-  border-radius: 50%;
-  background: var(--g);
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-  box-shadow: 0 12px 28px #2e2e2e55;
-  opacity: 0;
-  transform: translateY(20px);
-  pointer-events: none;
-  transition: 0.3s;
-}
-
-.top.on {
-  opacity: 1;
-  transform: none;
-  pointer-events: auto;
-}
-
-.top:hover {
-  transform: translateY(-4px);
-}
-
 body.light {
   --bg: #fff;
   --ink: #2e2e2e;
-  --mut: #4a90e2;
+  --mut: #566173;
+  --accent: #4a90e2;
   --line: #d9d9d9;
   --g: linear-gradient(135deg, #2e2e2e, #4a90e2);
   --ph: linear-gradient(135deg, #f4f4f4, #4a90e2);
@@ -488,6 +455,7 @@ body.dark #hd.sc .menu {
   color: #e6edf3;
 }
 
+body.dark #hd .links a,
 body.dark .links a,
 body.dark .menu,
 body.dark .logo,
@@ -602,23 +570,56 @@ body.dark .pic {
   border-color: #e6edf3;
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
+/* ===== Polish layer: fixes + smoother motion ===== */
+html{scroll-padding-top:84px}
+#hd{min-height:69px}
+.skip{position:absolute;left:12px;top:-60px;z-index:40;padding:8px 14px;border-radius:8px;background:var(--ink);color:var(--bg);font-weight:600;transition:top .2s}
+.skip:focus{top:10px}
+.theme-anim *,.theme-anim *:before,.theme-anim *:after{transition:background-color .35s,color .35s,border-color .35s,box-shadow .35s!important}
+.theme-toggle:hover{color:var(--accent);border-color:var(--accent)}
+.thumb{overflow:hidden}
+.thumb img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.card:hover .thumb img{transform:scale(1.05)}
+.pop{animation:pop .4s ease backwards}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.98)}}
+.empty{grid-column:1/-1;padding:32px;text-align:center;color:var(--mut);border:1px dashed var(--line);border-radius:var(--r)}
+.form input:user-invalid,.form textarea:user-invalid{border-color:#e5484d}
+.form .btn:disabled{opacity:.7;pointer-events:none}
+.form-status{margin-top:12px;font-size:12px;color:var(--mut)}
+.form-status.ok{color:#1a7f4b;font-weight:600}
+.form-status.bad{color:#e5484d;font-weight:600}
+.form-status a{text-decoration:underline}
+@media (max-width:760px){
+  #hd .links{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;gap:14px;padding:16px 24px;background:var(--bg);border-bottom:1px solid var(--line);opacity:0;visibility:hidden;translate:0 -8px;transition:opacity .25s,translate .25s,visibility .25s}
+  #hd .links.open{opacity:1;visibility:visible;translate:0}
+  .form input,.form textarea{font-size:16px}
 }
+@media (max-width:520px){.cv-long{display:none}.nav-actions{gap:8px}.nav-actions .btn.sm{padding:8px 14px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* ===== Scroll reveal: hidden state is set in CSS (html.js is added in <head>) so nothing flashes.
+   Selector list mirrors REVEAL in js/effects.js — keep them in sync. ===== */
+.js :is(.hero > *, .split > *, .cg > *, .sec > :not(.g3, .g4, .pills), .stats > *, .row, main > .h, main > .lead, .about-actions, .g3 > :not(.empty), .g4 > *, .pills > *, .tl > *, .footer-grid > *):not(.is-visible){opacity:0;translate:0 26px}
+.js .is-visible:not(.is-done){transition:opacity .7s ease var(--d,0ms),translate .7s cubic-bezier(.2,.7,.2,1) var(--d,0ms)}
+.theme-toggle .fa-sun,body.dark .theme-toggle .fa-moon{display:none}
+body.dark .theme-toggle .fa-sun{display:inline-block}
+[data-projects]:empty,[data-skills]:empty{min-height:320px}
 
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
+/* ===== Contact form extras ===== */
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form .err{display:block;margin-top:5px;font-size:11px;font-weight:500;color:#e5484d}
+.form [aria-invalid="true"]{border-color:#e5484d}
+body.dark .form-status.ok{color:#3fb950}
+
+/* ===== Project cards: Live Demo + GitHub actions ===== */
+.card[data-c]{display:flex;flex-direction:column}
+a.thumb{display:block}
+.tags{flex-wrap:wrap}
+.plinks{display:flex;gap:8px;margin-top:auto;padding-top:16px}
+.tags + .plinks{margin-top:auto}
+.pbtn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:12px;font-weight:600;line-height:1;transition:transform .2s,box-shadow .2s,border-color .2s,background .2s}
+.pbtn i{font-size:13px}
+.pbtn:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 8px 18px #2e2e2e1a}
+.pbtn.primary{background:var(--g);color:#fff;border-color:transparent;box-shadow:0 8px 18px #4a90e233}
+.pbtn.primary:hover{box-shadow:0 12px 24px #4a90e24d}
+@media (max-width:380px){.plinks{flex-direction:column}}

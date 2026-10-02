@@ -1,0 +1,7 @@
+# Local secrets and temporary mail test endpoint
+/backend/config.php
+/backend/test-mail.php
+
+# OS files
+.DS_Store
+Thumbs.db

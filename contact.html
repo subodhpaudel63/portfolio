@@ -9,14 +9,23 @@
       content="Contact Subodh Paudel, a web developer in Pokhara, Nepal, about projects, collaboration, or web development opportunities."
     />
     <link rel="canonical" href="https://subodh-paudel.com.np/contact.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Subodh Paudel Portfolio" />
+    <meta property="og:title" content="Contact Subodh Paudel | Portfolio" />
+    <meta property="og:description" content="Contact Subodh Paudel in Pokhara, Nepal, about web development projects and collaboration." />
+    <meta property="og:url" content="https://subodh-paudel.com.np/contact.html" />
+    <meta property="og:image" content="https://subodh-paudel.com.np/assets/images/projects/profile.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
+    <script>(function(d){if("IntersectionObserver"in window&&!matchMedia("(prefers-reduced-motion: reduce)").matches){d.classList.add("js");setTimeout(function(){if(!window.__rv)d.classList.remove("js")},3000)}})(document.documentElement)</script>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232e2e2e'/%3E%3Ctext x='32' y='43' font-size='28' font-weight='800' text-anchor='middle' fill='%234a90e2' font-family='Arial'%3ESP%3C/text%3E%3C/svg%3E" />
     <link rel="stylesheet" href="css/style.css" />
     <link
       rel="stylesheet"
@@ -29,9 +38,11 @@
     <link rel="stylesheet" href="css/theme.css" />
   </head>
   <body>
-    <header id="hd"></header>
+    <script>try{var t=localStorage.getItem("portfolio-theme");if(t?t==="dark":matchMedia("(prefers-color-scheme: dark)").matches)document.body.classList.add("dark")}catch(e){}</script>
+    <a class="skip" href="#main">Skip to content</a>
+    <header id="hd"><div class="wrap nav"><a href="index.html" class="logo"><b>SP</b>Subodh Paudel</a><nav class="links" id="site-nav" aria-label="Main"><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="skills.html">Skills</a><a href="contact.html" class="on" aria-current="page">Contact</a></nav><div class="nav-actions"><button class="theme-toggle" type="button" aria-label="Switch to dark theme"><i class="fa-solid fa-moon"></i><i class="fa-solid fa-sun"></i></button><a class="btn dark sm" data-cv href="assets/Subodh-Paudel-CV.pdf" download><span class="cv-long">Download </span>CV</a><button class="menu" type="button" aria-label="Toggle menu" aria-controls="site-nav" aria-expanded="false"><i class="fa-solid fa-bars"></i></button></div></div></header>
 
-    <main class="wrap">
+    <main class="wrap" id="main">
       <section class="cg">
         <div>
           <span class="chip">Get In Touch</span>
@@ -42,26 +53,24 @@
           </p>
 
           <div class="ci">
-            <i data-i="mail"></i>
-            <span><b>Email</b>subodhpaudel63@gmail.com</span>
+            <i class="i fa-solid fa-envelope" aria-hidden="true"></i>
+            <span><b>Email</b><a href="mailto:subodhpaudel0000@gmail.com">subodhpaudel0000@gmail.com</a></span>
           </div>
           <div class="ci">
-            <i data-i="phone"></i>
-            <span><b>Phone</b>+977 9816543210</span>
+            <i class="i fa-solid fa-phone" aria-hidden="true"></i>
+            <span><b>Phone</b><a href="tel:+9779748759699">+977 9748759699</a></span>
           </div>
           <div class="ci">
-            <i data-i="pin"></i>
+            <i class="i fa-solid fa-location-dot" aria-hidden="true"></i>
             <span><b>Location</b>Pokhara, Nepal</span>
           </div>
           <div class="ci">
-            <i data-i="user"></i>
+            <i class="i fa-solid fa-share-nodes" aria-hidden="true"></i>
             <span>
               <b>Social Media</b>
               <span
                 class="soc"
-                style="margin: 4px 0 0; font-size: 15px"
-                data-soc
-              ></span>
+                style="margin: 4px 0 0; font-size: 15px"><a href="https://github.com/subodhpaudel63" aria-label="GitHub"><i class="i fa-brands fa-github" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/subodh-paudel-580b322a7/" aria-label="LinkedIn"><i class="i fa-brands fa-linkedin-in" aria-hidden="true"></i></a><a href="mailto:subodhpaudel0000@gmail.com" aria-label="Email"><i class="i fa-solid fa-envelope" aria-hidden="true"></i></a></span>
             </span>
           </div>
         </div>
@@ -70,13 +79,13 @@
           <form class="form" id="cf">
             <label
               >Full Name *
-              <input name="name" placeholder="Your name" required />
+              <input name="name" placeholder="Your name" autocomplete="name" minlength="2" maxlength="80" required />
             </label>
             <label
               >Email Address *
               <input
                 name="email"
-                type="email"
+                type="email" autocomplete="email" maxlength="254"
                 placeholder="Your email"
                 required
               />
@@ -84,26 +93,24 @@
             <label
               >Message *
               <textarea
-                name="message"
+                name="message" minlength="10" maxlength="3000"
                 placeholder="Your message..."
                 required
               ></textarea>
             </label>
+            <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off" /></label></div>
             <button class="btn dark" type="submit">
-              Send Message <i data-i="arr"></i>
+              Send Message <i class="i fa-solid fa-arrow-right" aria-hidden="true"></i>
             </button>
             <p class="sm" style="margin-top: 12px; font-size: 10px">
               I'll get back to you as soon as possible.
             </p>
           </form>
-          <span class="note" style="right: 0; bottom: -70px"
-            >Let's build<br />something great</span
-          >
         </div>
       </section>
     </main>
 
-    <footer id="ft"></footer>
+    <footer id="ft"><div class="wrap footer-grid"><div class="footer-brand"><a href="index.html" class="logo"><b>SP</b>Subodh Paudel</a><p class="sm">BITM Student and Web Developer from Pokhara, Nepal.</p><p class="footer-copy">Building clean, useful digital experiences with purpose.</p></div><div><h3>Let's Connect</h3><p class="sm">Have a project or idea in mind?</p><a class="footer-mail" href="mailto:subodhpaudel0000@gmail.com">subodhpaudel0000@gmail.com</a><div class="soc"><a href="https://github.com/subodhpaudel63" aria-label="GitHub"><i class="i fa-brands fa-github" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/subodh-paudel-580b322a7/" aria-label="LinkedIn"><i class="i fa-brands fa-linkedin-in" aria-hidden="true"></i></a><a href="mailto:subodhpaudel0000@gmail.com" aria-label="Email"><i class="i fa-solid fa-envelope" aria-hidden="true"></i></a></div></div></div><div class="wrap cp">© <span data-year>2026</span> Subodh Paudel. All rights reserved.</div></footer>
 
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>

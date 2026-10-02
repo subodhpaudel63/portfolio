@@ -14,7 +14,7 @@ const menu = $(".menu"),
 const setMenu = (open) => {
   nav.classList.toggle("open", open);
   menu.setAttribute("aria-expanded", open);
-  menu.innerHTML = `<i class="fa-solid fa-${open ? "xmark" : "bars"}"></i>`;
+  menu.firstElementChild.className = `fa-solid fa-${open ? "xmark" : "bars"}`;
 };
 menu.onclick = () => setMenu(!nav.classList.contains("open"));
 nav.addEventListener("click", (e) => e.target.closest("a") && setMenu(false));

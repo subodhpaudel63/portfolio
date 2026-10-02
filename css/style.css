@@ -134,6 +134,7 @@ a {
   font-size: 24px;
   cursor: pointer;
   color: var(--ink);
+  touch-action: manipulation;
 }
 .btn {
   display: inline-flex;
@@ -634,6 +635,10 @@ h3.h {
   }
   .menu {
     display: block;
+    position: relative;
+    z-index: 1;
+    min-width: 44px;
+    min-height: 44px;
   }
   #hd .links.open {
     display: flex;
